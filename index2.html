@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTC Route Management System</title>
+    <link rel="stylesheet" href="styles">
+    <style>
+        .hidden { display: none; }
+        .highlight { background-color: yellow; }
+        button:hover { background-color: lightblue; }
+    </style>
+</head>
+<body>
+    <div id="busCountSection">
+        <label for="busCount">Enter number of buses:</label>
+        <input type="number" id="busCount" min="1">
+        <button onclick="showBusDetails()">Submit</button>
+    </div>
+
+    <div id="busDetailsSection" class="hidden"></div>
+
+    <div id="routeSelectionSection" class="hidden">
+        <h3>Select Routes</h3>
+        <label><input type="checkbox" value="New Delhi"> New Delhi</label>
+        <label><input type="checkbox" value="Gurugram"> Gurugram</label>
+        <label><input type="checkbox" value="Noida"> Noida</label>
+        <label><input type="checkbox" value="NCR"> NCR</label>
+        <label><input type="checkbox" value="Delhi Airport"> Delhi Airport</label>
+        <label><input type="checkbox" value="Railway Station"> Railway Station</label>
+        <label><input type="checkbox" value="India Gate"> India Gate</label>
+        <label><input type="checkbox" value="Qutab Minar"> Qutab Minar</label>
+        <button onclick="showRouteSelector()">Next</button>
+    </div>
+
+    <div id="routeSelectorSection" class="hidden"></div>
+
+    <div id="finalRoutesSection" class="hidden"></div>
+
+    <script >
+        function showBusDetails() {
+            const busCount = document.getElementById('busCount').value;
+            const busDetailsSection = document.getElementById('busDetailsSection');
+            busDetailsSection.innerHTML = '';
+        
+            for (let i = 0; i < busCount; i++) {
+                busDetailsSection.innerHTML += `
+                    <div>
+                        <h4>Bus ${i + 1}</h4>
+                        <label for="busNo${i}">Bus No:</label>
+                        <input type="text" id="busNo${i}">
+                        <label for="driverName${i}">Driver Name:</label>
+                        <input type="text" id="driverName${i}">
+                        <label for="startTime${i}">Start Time:</label>
+                        <input type="time" id="startTime${i}">
+                    </div>
+                `;
+            }
+        
+            busDetailsSection.innerHTML += '<button onclick="showRouteSelection()">Submit</button>';
+            document.getElementById('busCountSection').classList.add('hidden');
+            busDetailsSection.classList.remove('hidden');
+        }
+        
+        function showRouteSelection() {
+            document.getElementById('busDetailsSection').classList.add('hidden');
+            document.getElementById('routeSelectionSection').classList.remove('hidden');
+        }
+        
+        function showRouteSelector() {
+            const selectedRoutes = Array.from(document.querySelectorAll('#routeSelectionSection input:checked')).map(el => el.value);
+            const routeSelectorSection = document.getElementById('routeSelectorSection');
+            routeSelectorSection.innerHTML = '<h3>Select High Public Place</h3>';
+        
+            selectedRoutes.forEach(route => {
+                routeSelectorSection.innerHTML += `
+                    <label><input type="radio" name="highPublicPlace" value="${route}"> ${route}</label>
+                `;
+            });
+        
+            routeSelectorSection.innerHTML += '<button onclick="showFinalRoutes()">Next</button>';
+            document.getElementById('routeSelectionSection').classList.add('hidden');
+            routeSelectorSection.classList.remove('hidden');
+        }
+        
+        function showFinalRoutes() {
+            const highPublicPlace = document.querySelector('input[name="highPublicPlace"]:checked').value;
+            const busCount = document.getElementById('busCount').value;
+            const finalRoutesSection = document.getElementById('finalRoutesSection');
+            finalRoutesSection.innerHTML = '<h3>Bus Routes</h3>';
+        
+            for (let i = 0; i < busCount; i++) {
+                finalRoutesSection.innerHTML += `
+                    <div>
+                        <h4>Bus ${i + 1}</h4>
+                        <p>Driver Name: ${document.getElementById(`driverName${i}`).value}</p>
+                        <p>Start Time: ${document.getElementById(`startTime${i}`).value}</p>
+                        <p>Today's Routes: ${highPublicPlace} and 3 random routes</p>
+                        <button onclick="sendDetails(${i})">Send</button>
+                    </div>
+                `;
+            }
+        
+            document.getElementById('routeSelectorSection').classList.add('hidden');
+            finalRoutesSection.classList.remove('hidden');
+        }
+        
+        function sendDetails(busIndex) {
+            const email = prompt('Enter driver email:');
+            if (email) {
+                const busDetails = `
+                    Bus No: ${document.getElementById(`busNo${busIndex}`).value}
+                    Driver Name: ${document.getElementById(`driverName${busIndex}`).value}
+                    Start Time: ${document.getElementById(`startTime${busIndex}`).value}
+                    Today's Routes: ${document.querySelector('input[name="highPublicPlace"]:checked').value} and 3 random routes
+                `;
+                window.location.href = `mailto:${email}?subject=Bus Details&body=${encodeURIComponent(busDetails)}`;
+                alert('Details shared with crew member successfully');
+            }
+        }
+        
+    </script>
+</body>
+</html>

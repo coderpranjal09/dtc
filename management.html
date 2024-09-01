@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DTC Route Management System</title>
+    <link rel="stylesheet" href="style2.css" />
+    <style>
+        .hidden {
+          display: none;
+        }
+        .highlight {
+          background-color: yellow;
+        }
+        button:hover {
+          background-color: lightblue;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+        }
+        table,
+        th,
+        td {
+          border: 1px solid black;
+        }
+        th,
+        td {
+          padding: 8px;
+          text-align: left;
+        }
+      </style>
+  </head>
+  <body>
+    <section>
+    <nav>
+        <h1>Delhi Transport Corpration</h1>
+    </nav>
+    <div id="busCountSection">
+      <label for="busCount">Enter number of buses:</label>
+      <input type="number" id="busCount" min="1" required />
+      <button onclick="showBusDetails()">Submit</button>
+    </div>
+
+    <div id="busDetailsSection" class="hidden"></div>
+
+    <div id="routeSelectionSection" class="hidden">
+      <h3>Select Routes</h3>
+      <label><input type="checkbox" value="New Delhi" /> New Delhi</label>
+      <label><input type="checkbox" value="Gurugram" /> Gurugram</label>
+      <label><input type="checkbox" value="Noida" /> Noida</label>
+      <label><input type="checkbox" value="NCR" /> NCR</label>
+      <label
+        ><input type="checkbox" value="Delhi Airport" /> Delhi Airport</label
+      >
+      <label
+        ><input type="checkbox" value="Railway Station" /> Railway
+        Station</label
+      >
+      <label><input type="checkbox" value="India Gate" /> India Gate</label>
+      <label><input type="checkbox" value="Qutab Minar" /> Qutab Minar</label>
+      <button onclick="showRouteSelector()">Next</button>
+    </div>
+
+    <div id="routeSelectorSection" class="hidden"></div>
+
+    <div id="finalRoutesSection" class="hidden"></div>
+
+    <script>
+      function showBusDetails() {
+        const busCount = document.getElementById("busCount").value;
+        const busDetailsSection = document.getElementById("busDetailsSection");
+        busDetailsSection.innerHTML = "";
+
+        for (let i = 0; i < busCount; i++) {
+          busDetailsSection.innerHTML += `
+                    <div>
+                        <h4>Bus ${i + 1}</h4>
+                        <label for="busNo${i}">Bus No:</label>
+                        <input type="text" id="busNo${i}">
+                        <label for="driverName${i}">Driver Name:</label>
+                        <input type="text" id="driverName${i}">
+                        <label for="startTime${i}">Start Time:</label>
+                        <input type="time" id="startTime${i}">
+                    </div>
+                `;
+        }
+
+        busDetailsSection.innerHTML +=
+          '<button onclick="showRouteSelection()">Submit</button>';
+        document.getElementById("busCountSection").classList.add("hidden");
+        busDetailsSection.classList.remove("hidden");
+      }
+
+      function showRouteSelection() {
+        document.getElementById("busDetailsSection").classList.add("hidden");
+        document
+          .getElementById("routeSelectionSection")
+          .classList.remove("hidden");
+      }
+
+      function showRouteSelector() {
+        const selectedRoutes = Array.from(
+          document.querySelectorAll("#routeSelectionSection input:checked")
+        ).map((el) => el.value);
+        const routeSelectorSection = document.getElementById(
+          "routeSelectorSection"
+        );
+        routeSelectorSection.innerHTML = "<h3>Select High Public Place</h3>";
+
+        selectedRoutes.forEach((route) => {
+          routeSelectorSection.innerHTML += `
+                    <label><input type="radio" name="highPublicPlace" value="${route}"> ${route}</label>
+                `;
+        });
+
+        routeSelectorSection.innerHTML +=
+          '<button onclick="showFinalRoutes()">Next</button>';
+        document
+          .getElementById("routeSelectionSection")
+          .classList.add("hidden");
+        routeSelectorSection.classList.remove("hidden");
+      }
+
+      function getRandomRoutes(routes, count) {
+        const shuffled = routes.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+      }
+
+      function showFinalRoutes() {
+        const highPublicPlace = document.querySelector(
+          'input[name="highPublicPlace"]:checked'
+        ).value;
+        const selectedRoutes = Array.from(
+          document.querySelectorAll("#routeSelectionSection input:checked")
+        ).map((el) => el.value);
+        const otherRoutes = selectedRoutes.filter(
+          (route) => route !== highPublicPlace
+        );
+        const busCount = document.getElementById("busCount").value;
+        const finalRoutesSection =
+          document.getElementById("finalRoutesSection");
+        finalRoutesSection.innerHTML = "<h3>Bus Routes</h3>";
+
+        for (let i = 0; i < busCount; i++) {
+          const randomRoutes = getRandomRoutes(otherRoutes, 3).join(", ");
+          finalRoutesSection.innerHTML += `
+                    <div>
+                        <h4>Bus ${i + 1}</h4>
+                        <table>
+                            <tr><th>Bus No</th><td>${
+                              document.getElementById(`busNo${i}`).value
+                            }</td></tr>
+                            <tr><th>Driver Name</th><td>${
+                              document.getElementById(`driverName${i}`).value
+                            }</td></tr>
+                            <tr><th>Start Time</th><td>${
+                              document.getElementById(`startTime${i}`).value
+                            }</td></tr>
+                            <tr><th>Today's Routes</th><td>${highPublicPlace}, ${randomRoutes}</td></tr>
+                        </table>
+                    </div>
+                `;
+        }
+
+        finalRoutesSection.innerHTML +=
+          '<button onclick="sendDetails()">Send All</button>';
+        document.getElementById("routeSelectorSection").classList.add("hidden");
+        finalRoutesSection.classList.remove("hidden");
+      }
+
+      function sendDetails() {
+        const email = prompt("Enter email:");
+        if (email) {
+          let busDetails = "";
+          const busCount = document.getElementById("busCount").value;
+          for (let i = 0; i < busCount; i++) {
+            busDetails += `
+                        Bus ${i + 1} Details:
+                        Bus No: ${document.getElementById(`busNo${i}`).value}
+                        Driver Name: ${
+                          document.getElementById(`driverName${i}`).value
+                        }
+                        Start Time: ${
+                          document.getElementById(`startTime${i}`).value
+                        }
+                        Today's Routes: ${
+                          document.querySelector(
+                            'input[name="highPublicPlace"]:checked'
+                          ).value
+                        } and 3 random routes
+                        \n\n
+                    `;
+          }
+          window.location.href = `mailto:${email}?subject=Bus Details&body=${encodeURIComponent(
+            busDetails
+          )}`;
+          alert("Details shared with crew members successfully");
+        }
+      }
+    </script>
+    <script src="sc.js"></script>
+    </section>
+    <footer style="background-color: #004080; color: white; text-align: center; padding: 15px; margin-top: 20px;">
+        <p>&copy; 2024 Delhi Transport Corporation. All Rights Reserved.</p>
+        <p>
+            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 10px;">Terms of Service</a> | 
+            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 10px;">Contact Us</a>
+        </p>
+        <p>Follow us on 
+            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 5px;">Facebook</a>, 
+            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 5px;">Twitter</a>, 
+            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 5px;">Instagram</a>
+        </p>
+    </footer>
+    
+  </body>
+</html>

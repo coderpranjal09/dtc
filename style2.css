@@ -1,0 +1,305 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Body styling */
+  body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Navigation Bar */
+  nav {
+    background-color: #004d99;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  nav h1 {
+    margin: 0;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+  }
+  
+  /* Main Section */
+  section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* Bus Count Section */
+  #busCountSection {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  #busCountSection:hover {
+    transform: scale(1.02);
+  }
+  
+  #busCountSection label,
+  #routeSelectionSection label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  #busCountSection input[type="number"],
+  #busCountSection button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #busCountSection input[type="number"]:focus,
+  #busCountSection button:focus {
+    border-color: #004d99;
+    box-shadow: 0 0 8px rgba(0, 77, 153, 0.5);
+  }
+  
+  #busCountSection button {
+    background-color: #004d99;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #busCountSection button:hover {
+    background-color: #003366;
+    transform: translateY(-2px);
+  }
+  
+  /* Bus Details Section */
+  #busDetailsSection div {
+    background: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  #busDetailsSection h4 {
+    margin-bottom: 10px;
+    color: #004d99;
+  }
+  
+  #busDetailsSection input[type="text"],
+  #busDetailsSection input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #busDetailsSection input[type="text"]:focus,
+  #busDetailsSection input[type="time"]:focus {
+    border-color: #004d99;
+    box-shadow: 0 0 8px rgba(0, 77, 153, 0.5);
+  }
+  
+  #busDetailsSection button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #004d99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #busDetailsSection button:hover {
+    background-color: #003366;
+    transform: translateY(-2px);
+  }
+  
+  /* Route Selection Section */
+  #routeSelectionSection label {
+    display: block;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #routeSelectionSection label:hover {
+    background-color: #e6f0ff;
+    transform: translateY(-2px);
+  }
+  
+  #routeSelectionSection button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #004d99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #routeSelectionSection button:hover {
+    background-color: #003366;
+    transform: translateY(-2px);
+  }
+  
+  /* Route Selector Section */
+  #routeSelectorSection label {
+    display: block;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #routeSelectorSection label:hover {
+    background-color: #e6f0ff;
+    transform: translateY(-2px);
+  }
+  
+  #routeSelectorSection button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #004d99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #routeSelectorSection button:hover {
+    background-color: #003366;
+    transform: translateY(-2px);
+  }
+  
+  /* Final Routes Section */
+  #finalRoutesSection h3 {
+    margin-bottom: 20px;
+  }
+  
+  #finalRoutesSection div {
+    background: #fff;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  #finalRoutesSection table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #finalRoutesSection th,
+  #finalRoutesSection td {
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  #finalRoutesSection button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #004d99;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #finalRoutesSection button:hover {
+    background-color: #003366;
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    body {
+      padding: 10px;
+    }
+  
+    nav h1 {
+      font-size: 1.8em;
+    }
+  
+    #busCountSection,
+    #busDetailsSection,
+    #routeSelectionSection,
+    #routeSelectorSection,
+    #finalRoutesSection {
+      padding: 15px;
+    }
+  
+    #busCountSection label,
+    #routeSelectionSection label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  
+    #busCountSection input[type="number"],
+    #busCountSection button,
+    #busDetailsSection input[type="text"],
+    #busDetailsSection input[type="time"],
+    #busDetailsSection button,
+    #routeSelectionSection button,
+    #routeSelectorSection button,
+    #finalRoutesSection button {
+      width: 100%;
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    nav h1 {
+      font-size: 1.5em;
+    }
+  
+    #busCountSection,
+    #busDetailsSection,
+    #routeSelectionSection,
+    #routeSelectorSection,
+    #finalRoutesSection {
+      padding: 10px;
+    }
+  
+    #busCountSection input[type="number"],
+    #busCountSection button,
+    #busDetailsSection input[type="text"],
+    #busDetailsSection input[type="time"],
+    #busDetailsSection button,
+    #routeSelectionSection button,
+    #routeSelectorSection button,
+    #finalRoutesSection button {
+      font-size: 0.9em;
+    }
+  }
+  

@@ -1,0 +1,76 @@
+/* About Section */
+#aboutSection {
+    background: #f7f7f7;
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #aboutSection h2 {
+    color: #004d99;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #004d99;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  #aboutSection h2:hover {
+    color: #003366;
+  }
+  
+  #aboutSection p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  #aboutSection table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+  }
+  
+  #aboutSection th,
+  #aboutSection td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  #aboutSection th {
+    background-color: #004d99;
+    color: white;
+    font-weight: bold;
+  }
+  
+  #aboutSection td {
+    transition: background-color 0.3s ease;
+  }
+  
+  #aboutSection tr:hover td {
+    background-color: #e6f0ff;
+  }
+  
+  @media (max-width: 768px) {
+    #aboutSection {
+      padding: 20px;
+    }
+  
+    #aboutSection h2 {
+      font-size: 1.5em;
+    }
+  
+    #aboutSection p {
+      font-size: 1em;
+    }
+  
+    #aboutSection th,
+    #aboutSection td {
+      font-size: 0.9em;
+      padding: 8px;
+    }
+  }
+  
