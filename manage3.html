@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DTC Route Management System</title>
-    <link rel="stylesheet" href="stylemain.css" />
+    <link rel="stylesheet" href="style.css" />
     <style>
         .hidden {
             display: none;
@@ -53,11 +53,10 @@
     </style>
 </head>
 <body>
-    <nav>
-        <div class="navbar-title">DTC Management System</div>
-    </nav>
     <section>
-       
+        <nav>
+            <h1>Delhi Transport Corporation</h1>
+        </nav>
         <div id="busCountSection">
             <label for="busCount">Enter number of buses:</label>
             <input type="number" id="busCount" min="1" required />
@@ -88,78 +87,7 @@
             const crewMembers = [
                 { crewId: 'ABCDE99001', names: 'Frank Ward, Stella Sanders', memberId: 127, arrivalTime: '08:00', departureTime: '16:00' },
                 { crewId: 'FGHIJ22334', names: 'Jack Long, Ellie Price', memberId: 128, arrivalTime: '09:00', departureTime: '17:00' },
-                { crewId: 'KLMNO44556', names: 'Oliver White, Emma Harris', memberId: 129, arrivalTime: '10:00', departureTime: '18:00' },
-                { crewId: 'PQRST55667', names: 'Liam Brown, Sophia Martinez', memberId: 130, arrivalTime: '11:00', departureTime: '19:00' },
-                { crewId: 'UVWXY66778', names: 'Noah Smith, Isabella Johnson', memberId: 131, arrivalTime: '12:00', departureTime: '20:00' },
-                { crewId: 'YZABC77889', names: 'Mason Lee, Mia Wilson', memberId: 132, arrivalTime: '13:00', departureTime: '21:00' },
-                { crewId: 'DEFGH88990', names: 'Ethan Anderson, Ava Thomas', memberId: 133, arrivalTime: '14:00', departureTime: '22:00' },
-                { crewId: 'IJKLM99001', names: 'James Taylor, Charlotte Robinson', memberId: 134, arrivalTime: '15:00', departureTime: '23:00' },
-                { crewId: 'NOPQR10112', names: 'Benjamin Lewis, Amelia Clark', memberId: 135, arrivalTime: '16:00', departureTime: '00:00' },
-                { crewId: 'STUVW21323', names: 'Lucas Harris, Evelyn Lee', memberId: 136, arrivalTime: '17:00', departureTime: '01:00' },
-                { crewId: 'XYZAB32434', names: 'Alexander Walker, Abigail Walker', memberId: 137, arrivalTime: '18:00', departureTime: '02:00' },
-                { crewId: 'CDEFG43545', names: 'Michael Allen, Ella Hall', memberId: 138, arrivalTime: '19:00', departureTime: '03:00' },
-                { crewId: 'FGHIJ54656', names: 'Daniel Young, Grace King', memberId: 139, arrivalTime: '20:00', departureTime: '04:00' },
-                { crewId: 'JKLMN65767', names: 'Matthew Scott, Lily Wright', memberId: 140, arrivalTime: '21:00', departureTime: '05:00' },
-                { crewId: 'OPQRS76878', names: 'Henry Green, Chloe Scott', memberId: 141, arrivalTime: '22:00', departureTime: '06:00' },
-                { crewId: 'TUVWX87989', names: 'Andrew Adams, Zoe Turner', memberId: 142, arrivalTime: '23:00', departureTime: '07:00' },
-                { crewId: 'YZAAB99001', names: 'Aiden Baker, Mila Carter', memberId: 143, arrivalTime: '00:00', departureTime: '08:00' },
-                { crewId: 'BCDEF10112', names: 'Jack Mitchell, Lucy Hernandez', memberId: 144, arrivalTime: '01:00', departureTime: '09:00' },
-                { crewId: 'CDEFG21223', names: 'Ryan Harris, Ava Murphy', memberId: 145, arrivalTime: '02:00', departureTime: '10:00' },
-                { crewId: 'DEFGH32334', names: 'Dylan Clark, Mia Bell', memberId: 146, arrivalTime: '03:00', departureTime: '11:00' },
-                { crewId: 'EFGHI43445', names: 'Nathan Lee, Harper Gray', memberId: 147, arrivalTime: '04:00', departureTime: '12:00' },
-                { crewId: 'FGHIJ54556', names: 'William Miller, Ella Turner', memberId: 148, arrivalTime: '05:00', departureTime: '13:00' },
-                { crewId: 'GHIJK65667', names: 'James Wilson, Scarlett Martinez', memberId: 149, arrivalTime: '06:00', departureTime: '14:00' },
-                { crewId: 'HIJKL76778', names: 'Michael Harris, Aria Carter', memberId: 150, arrivalTime: '07:00', departureTime: '15:00' },
-                { crewId: 'IJKLM87889', names: 'John Robinson, Mia Adams', memberId: 151, arrivalTime: '08:00', departureTime: '16:00' },
-                { crewId: 'JKLMN98990', names: 'David Thompson, Olivia Robinson', memberId: 152, arrivalTime: '09:00', departureTime: '17:00' },
-                { crewId: 'LMNOP10101', names: 'Christopher Clark, Lily Adams', memberId: 153, arrivalTime: '10:00', departureTime: '18:00' },
-                { crewId: 'NOPQR21212', names: 'Daniel Allen, Ava Taylor', memberId: 154, arrivalTime: '11:00', departureTime: '19:00' },
-                { crewId: 'OPQRS32323', names: 'Matthew Wilson, Isabella Scott', memberId: 155, arrivalTime: '12:00', departureTime: '20:00' },
-                { crewId: 'QRSTT43434', names: 'Joseph King, Mia Lee', memberId: 156, arrivalTime: '13:00', departureTime: '21:00' },
-                { crewId: 'RSTUV54545', names: 'James Miller, Emily Brown', memberId: 157, arrivalTime: '14:00', departureTime: '22:00' },
-                { crewId: 'STUVW65656', names: 'John Walker, Lily Clark', memberId: 158, arrivalTime: '15:00', departureTime: '23:00' },
-                { crewId: 'TUVWX76767', names: 'Robert Martinez, Mia Thompson', memberId: 159, arrivalTime: '16:00', departureTime: '00:00' },
-                { crewId: 'UVWXY87878', names: 'Michael Adams, Sofia Johnson', memberId: 160, arrivalTime: '17:00', departureTime: '01:00' },
-                { crewId: 'WXYZA98989', names: 'William Harris, Emma Martinez', memberId: 161, arrivalTime: '18:00', departureTime: '02:00' },
-                { crewId: 'XYZAB10101', names: 'David Taylor, Olivia Clark', memberId: 162, arrivalTime: '19:00', departureTime: '03:00' },
-                { crewId: 'ZABCD21212', names: 'Matthew Wilson, Mia Martinez', memberId: 163, arrivalTime: '20:00', departureTime: '04:00' },
-                { crewId: 'BCDEF32323', names: 'Christopher Adams, Ava Wilson', memberId: 164, arrivalTime: '21:00', departureTime: '05:00' },
-                { crewId: 'CDEFG43434', names: 'Ryan Clark, Isabella Johnson', memberId: 165, arrivalTime: '22:00', departureTime: '06:00' },
-                { crewId: 'DEFGH54545', names: 'Daniel Brown, Emily Taylor', memberId: 166, arrivalTime: '23:00', departureTime: '07:00' },
-                { crewId: 'EFGHI65656', names: 'Michael Harris, Lily Wilson', memberId: 167, arrivalTime: '00:00', departureTime: '08:00' },
-                { crewId: 'FGHIJ76767', names: 'John Miller, Mia Adams', memberId: 168, arrivalTime: '01:00', departureTime: '09:00' },
-                { crewId: 'GHIJK87878', names: 'Robert Taylor, Olivia Clark', memberId: 169, arrivalTime: '02:00', departureTime: '10:00' },
-                { crewId: 'HIJKL98989', names: 'James Anderson, Ava Miller', memberId: 170, arrivalTime: '03:00', departureTime: '11:00' },
-                { crewId: 'IJKLM10101', names: 'David White, Emily Adams', memberId: 171, arrivalTime: '04:00', departureTime: '12:00' },
-                { crewId: 'JKLMN21212', names: 'William Scott, Mia Wilson', memberId: 172, arrivalTime: '05:00', departureTime: '13:00' },
-                { crewId: 'LMNOP32323', names: 'Matthew Young, Isabella Clark', memberId: 173, arrivalTime: '06:00', departureTime: '14:00' },
-                { crewId: 'NOPQR43434', names: 'Joseph Brown, Emma Harris', memberId: 174, arrivalTime: '07:00', departureTime: '15:00' },
-                { crewId: 'OPQRS54545', names: 'Daniel Taylor, Ava Johnson', memberId: 175, arrivalTime: '08:00', departureTime: '16:00' },
-                { crewId: 'QRSTT65656', names: 'Michael Wilson, Emily Martinez', memberId: 176, arrivalTime: '09:00', departureTime: '17:00' },
-                { crewId: 'RSTUV76767', names: 'Robert Harris, Olivia Brown', memberId: 177, arrivalTime: '10:00', departureTime: '18:00' },
-                { crewId: 'STUVW87878', names: 'James Clark, Mia Johnson', memberId: 178, arrivalTime: '11:00', departureTime: '19:00' },
-                { crewId: 'TUVWX98989', names: 'David Adams, Ava Lee', memberId: 179, arrivalTime: '12:00', departureTime: '20:00' },
-                { crewId: 'UVWXY10101', names: 'Matthew Wilson, Emily Scott', memberId: 180, arrivalTime: '13:00', departureTime: '21:00' },
-                { crewId: 'WXYZA21212', names: 'John Miller, Olivia Taylor', memberId: 181, arrivalTime: '14:00', departureTime: '22:00' },
-                { crewId: 'XYZAB32323', names: 'Christopher Young, Ava Brown', memberId: 182, arrivalTime: '15:00', departureTime: '23:00' },
-                { crewId: 'ZABCD43434', names: 'Ryan Harris, Emily Clark', memberId: 183, arrivalTime: '16:00', departureTime: '00:00' },
-                { crewId: 'BCDEF54545', names: 'Daniel White, Mia Scott', memberId: 184, arrivalTime: '17:00', departureTime: '01:00' },
-                { crewId: 'CDEFG65656', names: 'Michael Adams, Olivia Johnson', memberId: 185, arrivalTime: '18:00', departureTime: '02:00' },
-                { crewId: 'DEFGH76767', names: 'John Wilson, Ava Brown', memberId: 186, arrivalTime: '19:00', departureTime: '03:00' },
-                { crewId: 'EFGHI87878', names: 'Robert Harris, Emily Adams', memberId: 187, arrivalTime: '20:00', departureTime: '04:00' },
-                { crewId: 'FGHIJ98989', names: 'James Clark, Mia Taylor', memberId: 188, arrivalTime: '21:00', departureTime: '05:00' },
-                { crewId: 'GHIJK10101', names: 'David Young, Olivia Miller', memberId: 189, arrivalTime: '22:00', departureTime: '06:00' },
-                { crewId: 'HIJKL21212', names: 'Matthew Wilson, Emily Brown', memberId: 190, arrivalTime: '23:00', departureTime: '07:00' },
-                { crewId: 'IJKLM32323', names: 'John Miller, Mia Clark', memberId: 191, arrivalTime: '00:00', departureTime: '08:00' },
-                { crewId: 'JKLMN43434', names: 'Robert Adams, Olivia Scott', memberId: 192, arrivalTime: '01:00', departureTime: '09:00' },
-                { crewId: 'LMNOP54545', names: 'James Harris, Ava Johnson', memberId: 193, arrivalTime: '02:00', departureTime: '10:00' },
-                { crewId: 'NOPQR65656', names: 'David Wilson, Emily Lee', memberId: 194, arrivalTime: '03:00', departureTime: '11:00' },
-                { crewId: 'OPQRS76767', names: 'Matthew Brown, Olivia Harris', memberId: 195, arrivalTime: '04:00', departureTime: '12:00' },
-                { crewId: 'QRSTT87878', names: 'John Adams, Mia Miller', memberId: 196, arrivalTime: '05:00', departureTime: '13:00' },
-                { crewId: 'RSTUV98989', names: 'Robert Clark, Emily Johnson', memberId: 197, arrivalTime: '06:00', departureTime: '14:00' },
-                { crewId: 'STUVW10101', names: 'David Young, Olivia Miller', memberId: 198, arrivalTime: '07:00', departureTime: '15:00' },
-                { crewId: 'TUVWX21212', names: 'Matthew Harris, Ava Adams', memberId: 199, arrivalTime: '08:00', departureTime: '16:00' },
-                { crewId: 'UVWXY32323', names: 'John Wilson, Mia Brown', memberId: 200, arrivalTime: '09:00', departureTime: '17:00' }
+                // ... Additional crew members
             ];
 
             function populateCrewIdOptions() {
@@ -337,18 +265,11 @@
             }
         </script>
     </section>
-    <footer style="background-color: #004080; color: white; text-align: center; padding: 15px; margin-top: 20px;">
-        <p>&copy; 2024 Delhi Transport Corporation. All Rights Reserved.</p>
-        <p>
-            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
-            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 10px;">Terms of Service</a> | 
-            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 10px;">Contact Us</a>
-        </p>
-        <p>Follow us on 
-            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 5px;">Facebook</a>, 
-            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 5px;">Twitter</a>, 
-            <a href="#" style="color: #ffc107; text-decoration: none; margin: 0 5px;">Instagram</a>
-        </p>
+
+    <footer>
+        <a href="#">Contact Us</a> | 
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms of Service</a>
     </footer>
 </body>
 </html>
